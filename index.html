@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Pizza Pamphlet</title>
+</head>
+
+<body>
+
+    <script>
+        let total
+        let smallPizza
+        let mediumPizza
+        let largePizza
+        let smallPizzaTotal
+        let mediumPizzaTotal
+        let largePizzaTotal
+        let overAllTotal
+        let overAllItems
+    </script>
+
+    <div class="container">
+        <div>
+            <h1>Perfect Pizza</h1>
+        </div>
+
+        <div class="specials">
+            <div class=" col small">
+                <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg"
+                    alt="">
+                <h2>Small Pizza</h2>
+                <h3>R48.99</h3>
+                <i>
+                    <ul>
+                        <li>small pizza with 3 toppings</li>
+                        <li>1 meat topping.</li>
+                        <li>3 or less other toppings.</li>
+                    </ul>
+                </i>
+            </div>
+            <div class="col medium">
+                <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg"
+                    alt="">
+                <h2>Medium Pizza</h2>
+                <h3>R78.99</h3>
+                <i>
+                    medium margeritha pizza with 3 toppings max.
+                    2 or less meat topping.
+                    3 or less other toppings.
+                </i>
+
+            </div>
+            <div class="col large">
+                <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg"
+                    alt="">
+                <h2>Large Pizza</h2>
+                <h3>R114.99</h3>
+                <i>
+                    large margeritha pizza with 3 toppings max.
+                    3 meat toppings max.
+                    3 or less other toppings.
+                </i>
+            </div>
+        </div>
+
+
+        <!-- <div class="container"> -->
+            <h5>Pizza Order</h5>
+            <div x-data="{ small: 0, medium: 0, large: 0 }">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Size</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Increase/Decrease</th>
+                            <th scope="col">Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>Small</p>
+                            </td>
+                            <td>
+                                <p x-text="smallPizza=small"></p>
+                            </td>
+                            <td><button class="btn btn-dark" @click="small--">-</button>
+                                <button class="btn btn-dark" @click="small++">+</button>
+                            </td>
+                            <td>
+                                <p><strong x-text="smallPizzaTotal=small*48.99"></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Medium</p>
+                            </td>
+                            <td>
+                                <p x-text="mediumPizza=medium"></p>
+                            </td>
+                            <td><button class="btn btn-dark" @click="medium--">-</button>
+                                <button class="btn btn-dark" @click="medium++">+</button>
+                            </td>
+                            <td>
+                                <p><strong x-text="mediumPizzaTotal=medium*78.99"></strong></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Large</p>
+                            </td>
+                            <td>
+                                <p x-text="largePizza=large"></p>
+                            </td>
+                            <td><button class="btn btn-dark" @click="large--">-</button>
+                                <button class="btn btn-dark" @click="large++">+</button>
+                            </td>
+                            <td>
+                                <p><strong x-text="largePizzaTotal=large*114.99"></strong></p>
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <div x-data="{ open: false }">
+                    <button class="btn btn-dark" x-on:click="open = ! open">Cart</button>
+
+                    <div x-show="open">
+                        <div class="row">
+                            <template x-if="smallPizza>0">
+                                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><strong>Small Pizza's</strong></div>
+                                    <div class="card-body">
+                                        Quantity: <p x-text="smallPizza"></p>
+                                        Price: <p><strong x-text="smallPizzaTotal"></strong></p>
+                                    </div>
+                                </div>
+                            </template>
+
+                            <template x-if="mediumPizza>0">
+                                <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><strong>Medium Pizza's</strong></div>
+                                    <div class="card-body">
+                                        Quantity: <p x-text="mediumPizza"> </p>
+                                        Price: <p><strong x-text="mediumPizzaTotal"></strong></p>
+                                    </div>
+                                </div>
+
+                            </template>
+
+                            <template x-if="largePizza>0">
+                                <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+                                    <div class="card-header"><strong>Large Pizza's</strong></div>
+                                    <div class="card-body">
+                                        Quantity: <p x-text="largePizza"></p>
+                                        Price: <p><strong x-text="largePizzaTotal"></strong></p>
+                                    </div>
+                                </div>
+
+                            </template>
+
+
+                            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+                                <div class="card-header"><strong>Grand Total</strong></div>
+                                <div class="card-body">
+                                    <p>Items: <strong
+                                        x-text="overAllItems=smallPizza+mediumPizza+largePizza"></strong>
+                                </p>
+                                    <p>R <strong
+                                            x-text="overAllTotal=smallPizzaTotal+mediumPizzaTotal+largePizzaTotal"></strong>
+                                    </p>
+                                </div>
+                                <div x-data="{ show: false }">
+                                    <button class="btn btn-dark" @click="show=!show">CheckOut</button>
+
+                                    <template x-if="overAllTotal>0">
+                                        <div x-show.transition="show">Your Purchase has been successful!</div>
+                                    </template>
+                                    <template x-if="!overAllTotal>0">
+                                        <div x-show.transition="show">There are no items in your cart to purchase!</div>
+                                    </template>
+
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                        <!-- <p>Small</p>
+                        <p x-text="smallPizza">Quantity: </p>
+                        <p><strong x-text="smallPizzaTotal"></strong></p>
+                        <p>Medium</p>
+                        <p x-text="mediumPizza">Quantity: </p>
+                        <p><strong x-text="mediumPizzaTotal"></strong></p>
+                        <p>Large</p>
+                        <p x-text="largePizza">Quantity: </p>
+                        <p><strong x-text="largePizzaTotal"></strong></p>
+                        Grand Total<p><strong x-text="overAllTotal=smallPizzaTotal+mediumPizzaTotal+largePizzaTotal"></strong></p> -->
+                    </div>
+
+
+                </div>
+                <!-- <div x-data="{ show: false }">
+                    <button class="btn btn-dark" @click="show=!show">CheckOut</button>
+                    
+                    <template x-if="smallPizza>0||mediumPizza>0||largePizza>0">
+                        <div x-show.transition="show">Your Purchase has been successful!</div>
+
+                    </template>
+                    
+                </div> -->
+
+
+
+
+                <!-- <p>small</p>
+                <p x-text="small"></p>
+                <button class="btn btn-dark" @click="small--">-</button>
+                <button class="btn btn-dark" @click="small++">+</button>
+                <p>total small pizza amount is <strong x-text="total=small*48.99"></strong></p>
+                <template x-if="small==0">
+
+                </template>
+                <p>medium</p>
+                <p x-text="medium"></p>
+                <button class="btn btn-dark" @click="medium--">-</button>
+                <button class="btn btn-dark" @click="medium++">+</button>
+                <p>total medium pizza amount is <strong x-text="total=medium*78.99"></strong></p>
+                <p>large</p>
+                <p x-text="large"></p>
+                <button class="btn btn-dark" @click="large--">-</button>
+                <button class="btn btn-dark" @click="large++">+</button>
+                <p>total large pizza amount is <strong x-text="total=large*114.99"></strong></p>
+                <br>
+                <p>total number of pizza's are <strong x-text="total=small+medium+large"></strong></p> -->
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer fixed bg-success text-white">
+            <div class="contact">
+                <strong>Contact us at:</strong>
+                (021)-541-1000
+
+                <strong>twitter /fb /insta </strong> @perfectpizza
+            </div>
+            <div class="address">
+                Pizza Plaza
+                <br>
+                Dough Road
+                <br>
+                Base Town
+                <br>
+                7890
+            </div>
+        </div>
+    </div>
+</body>
