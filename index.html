@@ -62,7 +62,7 @@
                                                 <button class="btn btn-dark" @click="small++">+</button>
                                             </td>
                                             <td>
-                                                <p><strong x-text="smallPizzaTotal=smallPizza*48.99"></strong></p>
+                                                <p><strong x-text="smallPizzaTotal=(smallPizza*48.99).toFixed(2)"></strong></p>
                                             </td>
                                             
                                         </tr>
@@ -82,7 +82,7 @@
                                             <button class="btn btn-dark" @click="medium++">+</button>
                                         </td>
                                         <td>
-                                            <p><strong x-text="mediumPizzaTotal=medium*78.99"></strong></p>
+                                            <p><strong x-text="mediumPizzaTotal=(medium*78.99).toFixed(2)"></strong></p>
                                         </td>
     
                                        </tr>
@@ -101,7 +101,7 @@
                                                 <button class="btn btn-dark" @click="large++">+</button>
                                             </td>
                                             <td>
-                                                <p><strong x-text="largePizzaTotal=large*114.99"></strong></p>
+                                                <p><strong x-text="largePizzaTotal=(large*114.99).toFixed(2)"></strong></p>
                                             </td>
                 
                                         </tr>
