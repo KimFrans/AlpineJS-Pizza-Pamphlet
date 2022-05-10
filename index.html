@@ -113,7 +113,8 @@
                             </table>
                         </template>
                         <strong>Total price : </strong>  
-                        <span x-text="overAllTotal=(small*48.99)+(medium*78.99)+(large*114.99)">0.00</span>
+                        <span x-text="overAllTotal=((small*48.99)+(medium*78.99)+(large*114.99)).toFixed(2)"></span>
+                        <!-- <span x-text="overAllTotal=smallPizzaTotal+mediumPizzaTotal+largePizzaTotal"></span> -->
                         <div x-data="{ show: false }">
                             <div x-data="{ amount: ''}">
                                 
