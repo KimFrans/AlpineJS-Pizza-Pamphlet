@@ -38,7 +38,7 @@
                 <div class="cartTotal" >
                     <strong>Cart Items: </strong>  
                     
-                    <template x-if="small>0 || medium>0 || large>0">
+                        <template x-if="small>0 || medium>0 || large>0">
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -112,32 +112,27 @@
                                 </tbody>
                             </table>
                         </template>
-
-                        <template x-if="small>0 || medium>0 || large>0">
-
-                            <strong>Total price : </strong>  
-                            <span x-text="overAllTotal=(small*48.99)+(medium*78.99)+(large*114.99)">0.00</span>
-                            <div x-data="{ show: false }">
-                                <div x-data="{ amount: ''}">
-                                    
-                                    Payment amount: <input type="text" x-model.number="amount">
+                        <strong>Total price : </strong>  
+                        <span x-text="overAllTotal=(small*48.99)+(medium*78.99)+(large*114.99)">0.00</span>
+                        <div x-data="{ show: false }">
+                            <div x-data="{ amount: ''}">
                                 
-                                    <div x-show="test=amount-overAllTotal">
-                                        
-                                    </div>
+                                Payment amount: <input type="text" x-model.number="amount">
+                            
+                                <div x-show="test=amount-overAllTotal">
                                     
                                 </div>
-                                <button class="btn btn-dark" @click="show=!show">CheckOut</button>
-                                <template x-if="0>test">
-                                    <div x-show.transition="show">Insufficcient funds</div>
-                                </template>
-                                <template x-if="test>0">
-                                    <div x-show.transition="show">Your Purchase has been successful!</div>
-                                </template>
-    
+                                
                             </div>
-                        </template>
-    
+                            <button class="btn btn-dark" @click="show=!show">CheckOut</button>
+                            <template x-if="0>test">
+                                <div x-show.transition="show">Insufficient funds</div>
+                            </template>
+                            <template x-if="test>0">
+                                <div x-show.transition="show">Your Purchase has been successful!</div>
+                            </template>
+
+                        </div>
     
                     </div>
                     
