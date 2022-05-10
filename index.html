@@ -36,10 +36,10 @@
         <h5>Pizza Order</h5>
             <div x-data="{ small: 0, medium: 0, large: 0 }">
                 <div class="cartTotal" >
-                    <strong>Cart Items</strong>  
+                    <strong>Cart Items: </strong>  
                     
                     <template x-if="small>0 || medium>0 || large>0">
-                            <table>
+                            <table class="table">
                                 <thead>
                                     <tr>
                                         <th scope="col">Size</th>
@@ -112,34 +112,32 @@
                                 </tbody>
                             </table>
                         </template>
-    
-                        <strong>Total price</strong>  
-                        <span x-text="overAllTotal=(small*48.99)+(medium*78.99)+(large*114.99)">0.00</span>
-                        <div x-data="{ show: false }">
-                            <div x-data="{ age: ''}">
-                                
-                                <input type="text" x-model.number="age=amount">
-                                
-                                
-                                <!-- <div x-show="test=age-overAllTotal">
-                                    
-                                </div> -->
-                                
-                            </div>
-                            <button class="btn btn-dark" @click="show=!show">CheckOut</button>
-                            <template x-if="amount>overAllTotal">
-                                <div x-show.transition="show">Your Purchase has been successful!</div>
-                            </template>
-                            <template x-if="overAllTotal>amount">
-                                <div x-show.transition="show">Insufficcient funds</div>
-                            </template>
-                            <template x-if="!overAllTotal>0">
-                                <div x-show.transition="show">There are no items in your cart</div>
-                            </template>
 
+                        <template x-if="small>0 || medium>0 || large>0">
+
+                            <strong>Total price : </strong>  
+                            <span x-text="overAllTotal=(small*48.99)+(medium*78.99)+(large*114.99)">0.00</span>
+                            <div x-data="{ show: false }">
+                                <div x-data="{ amount: ''}">
+                                    
+                                    Payment amount: <input type="text" x-model.number="amount">
+                                
+                                    <div x-show="test=amount-overAllTotal">
+                                        
+                                    </div>
+                                    
+                                </div>
+                                <button class="btn btn-dark" @click="show=!show">CheckOut</button>
+                                <template x-if="0>test">
+                                    <div x-show.transition="show">Insufficcient funds</div>
+                                </template>
+                                <template x-if="test>0">
+                                    <div x-show.transition="show">Your Purchase has been successful!</div>
+                                </template>
     
+                            </div>
+                        </template>
     
-                        </div>
     
                     </div>
                     
