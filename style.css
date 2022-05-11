@@ -9,7 +9,7 @@ body {
 }
 
 .small {
-    background-color: #538d22;
+    background-color: #8ec744;
     border-radius: 5%;
     margin-right: 0.5rem;
 
@@ -24,7 +24,7 @@ body {
 .large {
     background-color: #aad576;
     border-radius: 5%;
-    height: 21rem;
+    height: 20rem;
     /* flex: 2; */
 }
 
@@ -35,38 +35,22 @@ body {
 }
 
 .small img {
-    width: 4em;
-    padding-left: 1em;
+    width: 5.5em;
+    padding-left: 0.5em;
     padding-top: 1em;
 }
-
-.small-img{
-    width: 4em;
-}
-
-.medium-img{
-    width: 5em;
-}
-
-.large-img{
-    width: 7em;
-}
-
-/* .total{
-    float: right;
-} */
 
 .medium img {
     width: 5em;
     padding-left: 0.5em;
-    /* padding-top: 1em; */
+    padding-top: 1em;
 }
 
 
 .large img {
-    width: 7em;
-    padding-left: 0.25em;
-    /* padding-top: 1em; */
+    width: 5em;
+    padding-left: 0.5em;
+    padding-top: 1em;
 
 }
 
